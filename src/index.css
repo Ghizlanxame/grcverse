@@ -1,0 +1,337 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* RetroGRC Design System - Cyberpunk meets modern governance
+All colors MUST be HSL for the retro-futuristic aesthetic.
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    /* Cyberpunk Color Palette - Light Mode (Terminal Green Base) */
+    --background: 120 100% 4%;
+    --foreground: 120 100% 85%;
+
+    --card: 120 30% 8%;
+    --card-foreground: 120 100% 90%;
+
+    --popover: 120 40% 6%;
+    --popover-foreground: 120 100% 85%;
+
+    --primary: 195 100% 50%;  /* Neon Cyan */
+    --primary-foreground: 120 100% 4%;
+
+    --secondary: 280 100% 60%; /* Electric Purple */
+    --secondary-foreground: 120 100% 95%;
+
+    --muted: 120 20% 15%;
+    --muted-foreground: 120 30% 70%;
+
+    --accent: 330 100% 60%; /* Hot Pink */
+    --accent-foreground: 120 100% 4%;
+
+    --destructive: 0 100% 65%;
+    --destructive-foreground: 120 100% 95%;
+
+    --border: 120 40% 20%;
+    --input: 120 30% 12%;
+    --ring: 195 100% 50%;
+
+    --radius: 0.75rem;
+
+    /* Retro Terminal Colors */
+    --terminal-green: 120 100% 50%;
+    --neon-cyan: 195 100% 50%;
+    --electric-purple: 280 100% 60%;
+    --hot-pink: 330 100% 60%;
+    --warning-amber: 45 100% 60%;
+    --grid-line: 120 40% 15%;
+
+    /* Gradients */
+    --gradient-cyber: linear-gradient(135deg, hsl(195 100% 50% / 0.2), hsl(280 100% 60% / 0.2));
+    --gradient-terminal: linear-gradient(180deg, hsl(120 100% 4%), hsl(120 60% 6%));
+    --gradient-neon: linear-gradient(90deg, hsl(195 100% 50%), hsl(330 100% 60%));
+
+    /* Shadows & Effects */
+    --glow-cyan: 0 0 20px hsl(195 100% 50% / 0.5);
+    --glow-purple: 0 0 20px hsl(280 100% 60% / 0.5);
+    --glow-pink: 0 0 20px hsl(330 100% 60% / 0.5);
+
+    --sidebar-background: 120 60% 6%;
+    --sidebar-foreground: 120 100% 80%;
+    --sidebar-primary: 195 100% 50%;
+    --sidebar-primary-foreground: 120 100% 4%;
+    --sidebar-accent: 120 40% 10%;
+    --sidebar-accent-foreground: 120 100% 85%;
+    --sidebar-border: 120 40% 15%;
+    --sidebar-ring: 195 100% 50%;
+  }
+
+  .dark {
+    /* Enhanced Dark Mode - Full Cyberpunk */
+    --background: 120 100% 2%;
+    --foreground: 120 100% 90%;
+
+    --card: 120 60% 4%;
+    --card-foreground: 120 100% 95%;
+
+    --popover: 120 80% 3%;
+    --popover-foreground: 120 100% 90%;
+
+    --primary: 195 100% 60%;  /* Brighter Neon Cyan */
+    --primary-foreground: 120 100% 2%;
+
+    --secondary: 280 100% 70%; /* Brighter Electric Purple */
+    --secondary-foreground: 120 100% 98%;
+
+    --muted: 120 40% 8%;
+    --muted-foreground: 120 50% 75%;
+
+    --accent: 330 100% 70%; /* Brighter Hot Pink */
+    --accent-foreground: 120 100% 2%;
+
+    --destructive: 0 100% 70%;
+    --destructive-foreground: 120 100% 98%;
+
+    --border: 120 60% 12%;
+    --input: 120 50% 6%;
+    --ring: 195 100% 60%;
+--sidebar-background: 120 80% 3%;
+    --sidebar-foreground: 120 100% 85%;
+    --sidebar-primary: 195 100% 60%;
+    --sidebar-primary-foreground: 120 100% 2%;
+    --sidebar-accent: 120 60% 6%;
+    --sidebar-accent-foreground: 120 100% 90%;
+    --sidebar-border: 120 60% 10%;
+    --sidebar-ring: 195 100% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+body {
+    @apply bg-background text-foreground font-mono;
+    background-image: 
+      radial-gradient(circle at 25% 25%, hsl(var(--grid-line)) 1px, transparent 1px),
+      radial-gradient(circle at 75% 75%, hsl(var(--grid-line)) 1px, transparent 1px);
+    background-size: 50px 50px;
+    background-position: 0 0, 25px 25px;
+ }
+}
+
+@layer components {
+  /* Cyberpunk UI Components */
+  .cyber-grid {
+    background-image: 
+      linear-gradient(hsl(var(--grid-line)) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--grid-line)) 1px, transparent 1px);
+    background-size: 20px 20px;
+  }
+.glow-cyan {
+    box-shadow: var(--glow-cyan);
+  }
+
+  .glow-purple {
+    box-shadow: var(--glow-purple);
+  }
+
+  .glow-pink {
+    box-shadow: var(--glow-pink);
+  }
+
+  .terminal-text {
+    @apply font-mono text-primary;
+    text-shadow: 0 0 10px hsl(var(--primary) / 0.8);
+  }
+
+  .neon-border {
+    border: 1px solid hsl(var(--primary));
+    box-shadow: 
+      0 0 5px hsl(var(--primary) / 0.5),
+      inset 0 0 5px hsl(var(--primary) / 0.1);
+}
+
+  .retro-card {
+    @apply bg-card border neon-border rounded-lg p-6;
+    background: 
+      linear-gradient(135deg, hsl(var(--card) / 0.9), hsl(var(--card) / 0.7)),
+      var(--gradient-cyber);
+/* Modern Futuristic GRC Design System - Sleek & Professional
+Clean, interactive, and business-focused aesthetic.
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+@layer base {
+  :root {
+    /* Modern Sleek Color Palette - Professional & Clean */
+    --background: 220 27% 98%;
+    --foreground: 220 20% 10%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 20% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 20% 10%;
+
+    --primary: 195 100% 50%;  /* Professional Cyan */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 30% 96%;
+    --secondary-foreground: 220 20% 15%;
+
+    --muted: 220 20% 96%;
+    --muted-foreground: 220 15% 45%;
+
+    --accent: 270 95% 75%; /* Subtle Purple Accent */
+    --accent-foreground: 220 20% 10%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 20% 90%;
+    --input: 220 20% 96%;
+    --ring: 195 100% 50%;
+
+    --radius: 0.75rem;
+
+    /* Modern Professional Colors */
+    --success: 142 76% 36%;
+    --warning: 38 92% 50%;
+    --info: 199 89% 48%;
+    --tech-blue: 210 100% 56%;
+    --gradient-primary: linear-gradient(135deg, hsl(195 100% 50%), hsl(210 100% 60%));
+    --gradient-card: linear-gradient(145deg, hsl(0 0% 100% / 0.8), hsl(220 20% 98% / 0.9));
+
+    /* Subtle Effects */
+    --shadow-sm: 0 1px 2px 0 hsl(0 0% 0% / 0.05);
+    --shadow-md: 0 4px 6px -1px hsl(0 0% 0% / 0.1), 0 2px 4px -1px hsl(0 0% 0% / 0.06);
+    --shadow-lg: 0 10px 15px -3px hsl(0 0% 0% / 0.1), 0 4px 6px -2px hsl(0 0% 0% / 0.05);
+    --shadow-glow: 0 0 20px hsl(195 100% 50% / 0.15);
+
+    --sidebar-background: 220 30% 98%;
+    --sidebar-foreground: 220 20% 15%;
+    --sidebar-primary: 195 100% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 220 25% 94%;
+    --sidebar-accent-foreground: 220 20% 15%;
+    --sidebar-border: 220 20% 88%;
+    --sidebar-ring: 195 100% 50%;
+  }
+
+  .dark {
+    /* Sleek Dark Mode - Professional Night Theme */
+    --background: 220 27% 5%;
+    --foreground: 220 20% 95%;
+
+    --card: 220 25% 8%;
+    --card-foreground: 220 20% 95%;
+
+    --popover: 220 25% 6%;
+    --popover-foreground: 220 20% 95%;
+
+    --primary: 195 100% 60%;  /* Bright Professional Cyan */
+    --primary-foreground: 220 27% 5%;
+
+    --secondary: 220 25% 12%;
+    --secondary-foreground: 220 20% 85%;
+
+    --muted: 220 25% 10%;
+    --muted-foreground: 220 15% 65%;
+
+    --accent: 270 95% 75%; /* Bright Purple Accent */
+    --accent-foreground: 220 27% 5%;
+
+    --destructive: 0 84% 65%;
+    --destructive-foreground: 220 20% 95%;
+
+    --border: 220 25% 15%;
+    --input: 220 25% 8%;
+    --ring: 195 100% 60%;
+
+    --gradient-primary: linear-gradient(135deg, hsl(195 100% 60%), hsl(210 100% 65%));
+    --gradient-card: linear-gradient(145deg, hsl(220 25% 8% / 0.9), hsl(220 20% 10% / 0.8));
+    --shadow-glow: 0 0 30px hsl(195 100% 60% / 0.2);
+
+    --sidebar-background: 220 30% 4%;
+    --sidebar-foreground: 220 20% 90%;
+    --sidebar-primary: 195 100% 60%;
+    --sidebar-primary-foreground: 220 27% 5%;
+    --sidebar-accent: 220 25% 8%;
+    --sidebar-accent-foreground: 220 20% 90%;
+    --sidebar-border: 220 25% 12%;
+    --sidebar-ring: 195 100% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+}
+
+@layer components {
+  /* Modern Professional UI Components */
+  .modern-card {
+    @apply bg-card border border-border rounded-xl shadow-lg backdrop-blur-sm;
+    background: var(--gradient-card);
+  }
+
+  .interactive-card {
+    @apply modern-card hover:shadow-xl hover:scale-[1.02] transition-all duration-300;
+    box-shadow: var(--shadow-md);
+  }
+
+  .interactive-card:hover {
+    box-shadow: var(--shadow-lg), var(--shadow-glow);
+  }
+
+  .primary-gradient {
+    background: var(--gradient-primary);
+  }
+
+  .glass-effect {
+    @apply backdrop-blur-lg bg-white/10 dark:bg-black/10 border border-white/20;
+  }
+
+  .tech-heading {
+    @apply text-foreground font-bold tracking-tight;
+    background: var(--gradient-primary);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .status-indicator {
+    @apply w-2 h-2 rounded-full;
+  }
+
+  .status-success {
+    @apply status-indicator bg-green-500;
+    box-shadow: 0 0 8px hsl(142 76% 36% / 0.6);
+  }
+
+  .status-warning {
+    @apply status-indicator bg-amber-500;
+    box-shadow: 0 0 8px hsl(38 92% 50% / 0.6);
+  }
+
+  .status-danger {
+    @apply status-indicator bg-red-500;
+    box-shadow: 0 0 8px hsl(0 84% 60% / 0.6);
+  }
+
+  .status-info {
+    @apply status-indicator bg-blue-500;
+    box-shadow: 0 0 8px hsl(199 89% 48% / 0.6);
+  }
+}
